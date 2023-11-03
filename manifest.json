@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Envision Project",
+  "description": "Add the reading time to Chrome Extension documentation articles",
+  "version": "1.0",
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["https://developer.chrome.com/*"]
+    }
+  ]
+}
