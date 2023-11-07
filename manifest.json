@@ -1,19 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Envision Project",
-  "description": "Add the reading time to Chrome Extension documentation articles",
+  "name": "HTML Copier Extension",
   "version": "1.0",
-  "background": {
-    "service_worker": "service-worker.js",
-    "type": "module"
-  },
+  "description": "Copy the HTML of the current page to the clipboard.",
+  "permissions": ["activeTab", "clipboardWrite"],
   "action": {
     "default_popup": "popup/popup.html"
   },
   "content_scripts": [
     {
+      "matches": ["<all_urls>"],
       "js": ["scripts/content.js"],
-      "matches": ["https://developer.chrome.com/*"]
+      "run_at": "document_idle"
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
 }
